@@ -5,9 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
     has_many :post_images, dependent: :destroy
+    has_many :post_comments, dependent: :destroy
+    has_many :favorites, dependent: :destroy
     
     has_one_attached :profile_image
     # この記述により、profile_imageという名前でActiveStorageにプロフィール画像を保存可能に
+  
     
   def get_profile_image(width, height)
     # 引数を入れたことで↑のメソッドを呼ぶ際にwidthとheightに数値を入れることで、その数値に変換できる.
